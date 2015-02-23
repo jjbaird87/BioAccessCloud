@@ -1,0 +1,2 @@
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioMasterCloud\bin\Debug\ServiceConfiguration.cscfg
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioMasterCloud\bin\Debug\ServiceDefinition.csdef

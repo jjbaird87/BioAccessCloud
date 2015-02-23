@@ -1,0 +1,6 @@
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioAccessTest_Production\bin\Debug\BioAccessTest_Production.dll.config
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioAccessTest_Production\bin\Debug\BioAccessTest_Production.dll
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioAccessTest_Production\bin\Debug\BioAccessTest_Production.pdb
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioAccessTest_Production\obj\Debug\BioAccessTest_Production.dll
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioAccessTest_Production\obj\Debug\BioAccessTest_Production.pdb
+C:\Users\JJ\Documents\Visual Studio 2013\Projects\BioMasterCloud\BioAccessTest_Production\obj\Debug\BioAccessTest_Production.csprojResolveAssemblyReference.cache

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b9b9812b-a226-42d0-a18e-eced720de9fe" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:41363/BioAccessCloudBasic.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BioAccessCloudBasic.disco" MetadataType="Disco" ID="f2570e5b-1bcf-4c27-a572-689d25f69322" SourceId="1" SourceUrl="http://localhost:41363/BioAccessCloudBasic.svc?disco" />
+    <MetadataFile FileName="BioAccessCloudBasic.xsd" MetadataType="Schema" ID="b6bdc42d-f075-44b7-9711-b28b9a83dd3a" SourceId="1" SourceUrl="http://localhost:41363/BioAccessCloudBasic.svc?xsd=xsd0" />
+    <MetadataFile FileName="BioAccessCloudBasic1.xsd" MetadataType="Schema" ID="67e71b09-c10b-4275-8a15-20d145468bd9" SourceId="1" SourceUrl="http://localhost:41363/BioAccessCloudBasic.svc?xsd=xsd2" />
+    <MetadataFile FileName="BioAccessCloudBasic2.xsd" MetadataType="Schema" ID="08f371d3-b0b5-43ff-bbaf-d7976bf26622" SourceId="1" SourceUrl="http://localhost:41363/BioAccessCloudBasic.svc?xsd=xsd1" />
+    <MetadataFile FileName="BioAccessCloudBasic.wsdl" MetadataType="Wsdl" ID="04d6d354-e7ea-4898-8bbd-cbf33ab85fac" SourceId="1" SourceUrl="http://localhost:41363/BioAccessCloudBasic.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

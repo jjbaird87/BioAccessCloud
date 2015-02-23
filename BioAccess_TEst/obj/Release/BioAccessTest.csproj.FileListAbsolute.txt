@@ -1,0 +1,5 @@
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioAccess_TEst\bin\Release\BioAccess_TEst.dll.config
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioAccess_TEst\bin\Release\BioAccess_TEst.dll
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioAccess_TEst\bin\Release\BioAccess_TEst.pdb
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioAccess_TEst\obj\Release\BioAccess_TEst.dll
+c:\users\jj\documents\visual studio 2013\Projects\BioMasterCloud\BioAccess_TEst\obj\Release\BioAccess_TEst.pdb

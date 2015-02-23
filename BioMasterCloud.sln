@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "BioMasterCloud", "BioMasterCloud\BioMasterCloud.ccproj", "{4F59B366-BC7A-4FDB-B884-FF1061499E34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioAccessCloudWCF", "WCFServiceWebRole1\BioAccessCloudWCF.csproj", "{79F28576-65E1-4ECC-9288-30E30C238F2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioAccessTest", "BioAccess_TEst\BioAccessTest.csproj", "{CEB4DA3C-C154-4265-9B35-B7F2AD2D18C2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{79F28576-65E1-4ECC-9288-30E30C238F2E} = {79F28576-65E1-4ECC-9288-30E30C238F2E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioAccessTest_Production", "BioAccessTest_Production\BioAccessTest_Production.csproj", "{E7F65612-F70D-43D9-A531-E0F3745DEA89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F59B366-BC7A-4FDB-B884-FF1061499E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F59B366-BC7A-4FDB-B884-FF1061499E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F59B366-BC7A-4FDB-B884-FF1061499E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F59B366-BC7A-4FDB-B884-FF1061499E34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79F28576-65E1-4ECC-9288-30E30C238F2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79F28576-65E1-4ECC-9288-30E30C238F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79F28576-65E1-4ECC-9288-30E30C238F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79F28576-65E1-4ECC-9288-30E30C238F2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEB4DA3C-C154-4265-9B35-B7F2AD2D18C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEB4DA3C-C154-4265-9B35-B7F2AD2D18C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEB4DA3C-C154-4265-9B35-B7F2AD2D18C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEB4DA3C-C154-4265-9B35-B7F2AD2D18C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7F65612-F70D-43D9-A531-E0F3745DEA89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7F65612-F70D-43D9-A531-E0F3745DEA89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7F65612-F70D-43D9-A531-E0F3745DEA89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7F65612-F70D-43D9-A531-E0F3745DEA89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

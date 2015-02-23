@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BioAccessCloudModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BioAccessCloudEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AttendanceTransactions" EntityType="BioAccessCloudModel.AttendanceTransaction" />
+    <EntitySet Name="Customers" EntityType="BioAccessCloudModel.Customer" />
+    <EntitySet Name="Employees" EntityType="BioAccessCloudModel.Employee" />
+    <EntitySet Name="EmployeeGroups" EntityType="BioAccessCloudModel.EmployeeGroup" />
+    <EntitySet Name="Groups" EntityType="BioAccessCloudModel.Group" />
+    <EntitySet Name="TemplateTypes" EntityType="BioAccessCloudModel.TemplateType" />
+    <AssociationSet Name="FK_AttendanceTransaction_0" Association="BioAccessCloudModel.FK_AttendanceTransaction_0">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="AttendanceTransaction" EntitySet="AttendanceTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_0" Association="BioAccessCloudModel.FK_Employee_0">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Group_1" Association="BioAccessCloudModel.FK_Group_1">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Group" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeGroup_0" Association="BioAccessCloudModel.FK_EmployeeGroup_0">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeGroup" EntitySet="EmployeeGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeGroup_1" Association="BioAccessCloudModel.FK_EmployeeGroup_1">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="EmployeeGroup" EntitySet="EmployeeGroups" />
+    </AssociationSet>
+    <EntitySet Name="Sites" EntityType="BioAccessCloudModel.Site" />
+    <AssociationSet Name="FK_Site_0" Association="BioAccessCloudModel.FK_Site_0">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Site" EntitySet="Sites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Group_0" Association="BioAccessCloudModel.FK_Group_0">
+      <End Role="Site" EntitySet="Sites" />
+      <End Role="Group" EntitySet="Groups" />
+    </AssociationSet>
+    <EntitySet Name="Templates" EntityType="BioAccessCloudModel.Template" />
+    <AssociationSet Name="FK_Templates_0" Association="BioAccessCloudModel.FK_Templates_0">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Template" EntitySet="Templates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Templates_1" Association="BioAccessCloudModel.FK_Templates_1">
+      <End Role="TemplateType" EntitySet="TemplateTypes" />
+      <End Role="Template" EntitySet="Templates" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AttendanceTransaction">
+    <Key>
+      <PropertyRef Name="AttendanceTransaction_ID" />
+    </Key>
+    <Property Name="AttendanceTransaction_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Latitude" Type="Double" Nullable="false" />
+    <Property Name="Longitude" Type="Double" Nullable="false" />
+    <Property Name="Employee_ID" Type="Int32" Nullable="false" />
+    <Property Name="EMEI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InOut" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="BioAccessCloudModel.FK_AttendanceTransaction_0" FromRole="AttendanceTransaction" ToRole="Employee" />
+    <Property Name="Downloaded" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customer_ID" />
+    </Key>
+    <Property Name="Customer_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VatNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employees" Relationship="BioAccessCloudModel.FK_Employee_0" FromRole="Customer" ToRole="Employee" />
+    <NavigationProperty Name="Groups" Relationship="BioAccessCloudModel.FK_Group_1" FromRole="Customer" ToRole="Group" />
+    <NavigationProperty Name="Sites" Relationship="BioAccessCloudModel.FK_Site_0" FromRole="Customer" ToRole="Site" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Employee_ID" />
+    </Key>
+    <Property Name="Employee_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Customer_ID" Type="Int32" Nullable="false" />
+    <Property Name="RSA_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BioAccess_ID" Type="Guid" />
+    <NavigationProperty Name="AttendanceTransactions" Relationship="BioAccessCloudModel.FK_AttendanceTransaction_0" FromRole="Employee" ToRole="AttendanceTransaction" />
+    <NavigationProperty Name="Customer" Relationship="BioAccessCloudModel.FK_Employee_0" FromRole="Employee" ToRole="Customer" />
+    <NavigationProperty Name="EmployeeGroups" Relationship="BioAccessCloudModel.FK_EmployeeGroup_0" FromRole="Employee" ToRole="EmployeeGroup" />
+    <NavigationProperty Name="Templates" Relationship="BioAccessCloudModel.FK_Templates_0" FromRole="Employee" ToRole="Template" />
+  </EntityType>
+  <EntityType Name="EmployeeGroup">
+    <Key>
+      <PropertyRef Name="EmployeeGroup_ID" />
+    </Key>
+    <Property Name="EmployeeGroup_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee_ID" Type="Int32" Nullable="false" />
+    <Property Name="Group_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="BioAccessCloudModel.FK_EmployeeGroup_0" FromRole="EmployeeGroup" ToRole="Employee" />
+    <NavigationProperty Name="Group" Relationship="BioAccessCloudModel.FK_EmployeeGroup_1" FromRole="EmployeeGroup" ToRole="Group" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="Group_ID" />
+    </Key>
+    <Property Name="Group_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Site_ID" Type="Int32" Nullable="false" />
+    <Property Name="Customer_ID" Type="Int32" Nullable="false" />
+    <Property Name="BioAccess_ID" Type="Guid" />
+    <NavigationProperty Name="Customer" Relationship="BioAccessCloudModel.FK_Group_1" FromRole="Group" ToRole="Customer" />
+    <NavigationProperty Name="EmployeeGroups" Relationship="BioAccessCloudModel.FK_EmployeeGroup_1" FromRole="Group" ToRole="EmployeeGroup" />
+    <NavigationProperty Name="Site" Relationship="BioAccessCloudModel.FK_Group_0" FromRole="Group" ToRole="Site" />
+  </EntityType>
+  <EntityType Name="TemplateType">
+    <Key>
+      <PropertyRef Name="TemplateType_ID" />
+    </Key>
+    <Property Name="TemplateType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Proprietary" Type="Boolean" Nullable="false" />
+    <Property Name="Brand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Templates" Relationship="BioAccessCloudModel.FK_Templates_1" FromRole="TemplateType" ToRole="Template" />
+  </EntityType>
+  <Association Name="FK_AttendanceTransaction_0">
+    <End Type="BioAccessCloudModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BioAccessCloudModel.AttendanceTransaction" Role="AttendanceTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Employee_ID" />
+      </Principal>
+      <Dependent Role="AttendanceTransaction">
+        <PropertyRef Name="Employee_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_0">
+    <End Type="BioAccessCloudModel.Customer" Role="Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BioAccessCloudModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_ID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Customer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Group_1">
+    <End Type="BioAccessCloudModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="BioAccessCloudModel.Group" Role="Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_ID" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="Customer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeGroup_0">
+    <End Type="BioAccessCloudModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BioAccessCloudModel.EmployeeGroup" Role="EmployeeGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Employee_ID" />
+      </Principal>
+      <Dependent Role="EmployeeGroup">
+        <PropertyRef Name="Employee_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeGroup_1">
+    <End Type="BioAccessCloudModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="BioAccessCloudModel.EmployeeGroup" Role="EmployeeGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Group_ID" />
+      </Principal>
+      <Dependent Role="EmployeeGroup">
+        <PropertyRef Name="Group_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Site">
+    <Key>
+      <PropertyRef Name="Site_ID" />
+    </Key>
+    <Property Name="Site_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SiteName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_ID" Type="Int32" Nullable="false" />
+    <Property Name="Latitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Longitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BioAccess_ID" Type="Guid" />
+    <NavigationProperty Name="Customer" Relationship="BioAccessCloudModel.FK_Site_0" FromRole="Site" ToRole="Customer" />
+    <NavigationProperty Name="Groups" Relationship="BioAccessCloudModel.FK_Group_0" FromRole="Site" ToRole="Group" />
+  </EntityType>
+  <Association Name="FK_Site_0">
+    <End Type="BioAccessCloudModel.Customer" Role="Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BioAccessCloudModel.Site" Role="Site" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_ID" />
+      </Principal>
+      <Dependent Role="Site">
+        <PropertyRef Name="Customer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Group_0">
+    <End Type="BioAccessCloudModel.Site" Role="Site" Multiplicity="1" />
+    <End Type="BioAccessCloudModel.Group" Role="Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Site">
+        <PropertyRef Name="Site_ID" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="Site_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Template">
+    <Key>
+      <PropertyRef Name="Template_ID" />
+    </Key>
+    <Property Name="Template_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FingerNumber" Type="Int16" />
+    <Property Name="Template1" Type="Binary" Nullable="false" MaxLength="2000" FixedLength="false" />
+    <Property Name="TemplateType_ID" Type="Int32" Nullable="false" />
+    <Property Name="Employee_ID" Type="Int32" Nullable="false" />
+    <Property Name="BioAccess_ID" Type="Guid" />
+    <NavigationProperty Name="Employee" Relationship="BioAccessCloudModel.FK_Templates_0" FromRole="Template" ToRole="Employee" />
+    <NavigationProperty Name="TemplateType" Relationship="BioAccessCloudModel.FK_Templates_1" FromRole="Template" ToRole="TemplateType" />
+  </EntityType>
+  <Association Name="FK_Templates_0">
+    <End Type="BioAccessCloudModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BioAccessCloudModel.Template" Role="Template" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Employee_ID" />
+      </Principal>
+      <Dependent Role="Template">
+        <PropertyRef Name="Employee_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Templates_1">
+    <End Type="BioAccessCloudModel.TemplateType" Role="TemplateType" Multiplicity="1" />
+    <End Type="BioAccessCloudModel.Template" Role="Template" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TemplateType">
+        <PropertyRef Name="TemplateType_ID" />
+      </Principal>
+      <Dependent Role="Template">
+        <PropertyRef Name="TemplateType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

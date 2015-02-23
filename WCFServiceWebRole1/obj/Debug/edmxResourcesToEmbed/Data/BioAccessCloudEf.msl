@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BioAccessCloudModelStoreContainer" CdmEntityContainer="BioAccessCloudEntities">
+    <EntitySetMapping Name="AttendanceTransactions">
+      <EntityTypeMapping TypeName="BioAccessCloudModel.AttendanceTransaction">
+        <MappingFragment StoreEntitySet="AttendanceTransaction">
+          <ScalarProperty Name="Downloaded" ColumnName="Downloaded" />
+          <ScalarProperty Name="InOut" ColumnName="InOut" />
+          <ScalarProperty Name="EMEI" ColumnName="EMEI" />
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="AttendanceTransaction_ID" ColumnName="AttendanceTransaction_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="BioAccessCloudModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="BioAccessCloudModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="BioAccess_ID" ColumnName="BioAccess_ID" />
+          <ScalarProperty Name="RSA_ID" ColumnName="RSA_ID" />
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeGroups">
+      <EntityTypeMapping TypeName="BioAccessCloudModel.EmployeeGroup">
+        <MappingFragment StoreEntitySet="EmployeeGroup">
+          <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+          <ScalarProperty Name="EmployeeGroup_ID" ColumnName="EmployeeGroup_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="BioAccessCloudModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="BioAccess_ID" ColumnName="BioAccess_ID" />
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+          <ScalarProperty Name="Site_ID" ColumnName="Site_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TemplateTypes">
+      <EntityTypeMapping TypeName="BioAccessCloudModel.TemplateType">
+        <MappingFragment StoreEntitySet="TemplateType">
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Proprietary" ColumnName="Proprietary" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TemplateType_ID" ColumnName="TemplateType_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sites">
+      <EntityTypeMapping TypeName="BioAccessCloudModel.Site">
+        <MappingFragment StoreEntitySet="Site">
+          <ScalarProperty Name="BioAccess_ID" ColumnName="BioAccess_ID" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="Site_ID" ColumnName="Site_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Templates">
+      <EntityTypeMapping TypeName="BioAccessCloudModel.Template">
+        <MappingFragment StoreEntitySet="Template">
+          <ScalarProperty Name="BioAccess_ID" ColumnName="BioAccess_ID" />
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+          <ScalarProperty Name="TemplateType_ID" ColumnName="TemplateType_ID" />
+          <ScalarProperty Name="Template1" ColumnName="Template" />
+          <ScalarProperty Name="FingerNumber" ColumnName="FingerNumber" />
+          <ScalarProperty Name="Template_ID" ColumnName="Template_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
