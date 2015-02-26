@@ -56,7 +56,76 @@
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RsaId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Templates" nillable="true" type="tns:ArrayOfDataStructures.TemplateBac" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DataStructures.EmployeeBac" nillable="true" type="tns:DataStructures.EmployeeBac" />
+  <xs:complexType name="ArrayOfDataStructures.TemplateBac">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataStructures.TemplateBac" nillable="true" type="tns:DataStructures.TemplateBac" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataStructures.TemplateBac" nillable="true" type="tns:ArrayOfDataStructures.TemplateBac" />
+  <xs:complexType name="DataStructures.TemplateBac">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BioAccessId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="EmployeeId" type="xs:int" />
+      <xs:element minOccurs="0" name="FingerNumber" nillable="true" type="xs:short" />
+      <xs:element minOccurs="0" name="Template" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="TemplateId" type="xs:int" />
+      <xs:element minOccurs="0" name="TemplateType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TerminalFp" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataStructures.TemplateBac" nillable="true" type="tns:DataStructures.TemplateBac" />
+  <xs:complexType name="ArrayOfDataStructures.GroupBac">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataStructures.GroupBac" nillable="true" type="tns:DataStructures.GroupBac" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataStructures.GroupBac" nillable="true" type="tns:ArrayOfDataStructures.GroupBac" />
+  <xs:complexType name="DataStructures.GroupBac">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BioAccessId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+      <xs:element minOccurs="0" name="GroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SiteId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataStructures.GroupBac" nillable="true" type="tns:DataStructures.GroupBac" />
+  <xs:complexType name="ArrayOfDataStructures.EmployeeGroupBac">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataStructures.EmployeeGroupBac" nillable="true" type="tns:DataStructures.EmployeeGroupBac" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataStructures.EmployeeGroupBac" nillable="true" type="tns:ArrayOfDataStructures.EmployeeGroupBac" />
+  <xs:complexType name="DataStructures.EmployeeGroupBac">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmployeeGroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="EmployeeId" type="xs:int" />
+      <xs:element minOccurs="0" name="GroupId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataStructures.EmployeeGroupBac" nillable="true" type="tns:DataStructures.EmployeeGroupBac" />
+  <xs:complexType name="ArrayOfDataStructures.AttendanceTransactionBac">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataStructures.AttendanceTransactionBac" nillable="true" type="tns:DataStructures.AttendanceTransactionBac" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataStructures.AttendanceTransactionBac" nillable="true" type="tns:ArrayOfDataStructures.AttendanceTransactionBac" />
+  <xs:complexType name="DataStructures.AttendanceTransactionBac">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttendanceTransactionId" type="xs:int" />
+      <xs:element minOccurs="0" name="Downloaded" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Emei" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Employee" nillable="true" type="tns:DataStructures.EmployeeBac" />
+      <xs:element minOccurs="0" name="EmployeeId" type="xs:int" />
+      <xs:element minOccurs="0" name="InOut" type="xs:short" />
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
+      <xs:element minOccurs="0" name="TransactionDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataStructures.AttendanceTransactionBac" nillable="true" type="tns:DataStructures.AttendanceTransactionBac" />
 </xs:schema>

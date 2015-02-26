@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
+using Microsoft.WindowsAzure.Storage.Table;
 using WCFServiceWebRole1.Data;
 
 namespace WCFServiceWebRole1
@@ -72,10 +73,13 @@ namespace WCFServiceWebRole1
             }).ToList();
         }
 
-        public string CreateUpdateSites(ref IEnumerable<DataStructures.SiteBac> sites)
+        public string CreateUpdateSites(ref IEnumerable<DataStructures.SiteBac> sites, int customerId)
         {
             var ctx = new BioAccessCloudEntities();
-            foreach (var site in sites)
+            var siteBacs = sites as IList<DataStructures.SiteBac> ?? sites.ToList();
+            FindAndDeleteUnusedSites(siteBacs, ctx, customerId);
+
+            foreach (var site in siteBacs)
             {
                 //Determine add or edit
                 if (ctx.Sites.Any(x => x.BioAccess_ID == site.BioAccessId))
@@ -110,28 +114,72 @@ namespace WCFServiceWebRole1
             return "";
         }
 
+        private static void FindAndDeleteUnusedSites(IEnumerable<DataStructures.SiteBac> sites, BioAccessCloudEntities ctx, int customerId)
+        {
+            var siteBacs = sites as IList<DataStructures.SiteBac> ?? sites.ToList();
+            var siteList = siteBacs.Select(site => site.SiteId).ToList();
+
+            var toDelete =
+                (from e in ctx.Sites
+                 where !siteList.Contains(e.Site_ID) && e.Customer_ID == customerId
+                 select e);
+            var deleteList = toDelete.ToList().Select(site => site.Site_ID).ToList();
+
+            //REMOVE GROUPS
+            DeleteGroupsForSites(deleteList);
+
+            //REMOVE SITE
+            ctx.Sites.RemoveRange(toDelete);
+            ctx.SaveChanges();
+        }
+
+        private static void DeleteGroupsForSites(List< int> siteIds)
+        {
+            var ctx = new BioAccessCloudEntities();
+            var toDelete = (from e in ctx.Groups where siteIds.Contains(e.Site_ID) select e);
+            
+            //REMOVE GROUP ASSIGNMENTS
+            var groupList = toDelete.ToList().Select(group => group.Group_ID).ToList();
+            RemoveGroupAssignmentsGroups(groupList);
+
+            ctx.Groups.RemoveRange(toDelete);
+            ctx.SaveChanges();
+        }
+
+        private static void RemoveGroupAssignmentsGroups(List<int> groupIds)
+        {
+            var ctx = new BioAccessCloudEntities();
+            var toDelete = (from e in ctx.EmployeeGroups where groupIds.Contains(e.Group_ID) select e);
+            ctx.EmployeeGroups.RemoveRange(toDelete);
+            ctx.SaveChanges();
+        }
+
         #endregion
 
         #region Employees
         //Employees
-        public List<DataStructures.EmployeeBac> GetEmployeesPerSite(int siteId)
+        public List<DataStructures.EmployeeBac> GetEmployeesPerSite(int siteId, bool? terminalTemplates, string templateType)
         {
             try
             {
                 var ctx = new BioAccessCloudEntities();
                 var employees =
-                    (from p in ctx.Employees select p).Where(x => x.EmployeeGroups.Any(i => i.Group.Site_ID == siteId)).ToList();
+                    (from p in ctx.Employees select p).Where(x => x.EmployeeGroups.Any(i => i.Group.Site_ID == siteId));
 
-                var employeelist = EmployeeBacs(employees);
+                if (templateType != null)
+                    employees = employees.Where(x => x.Templates.Any(c => c.TemplateType.Description == templateType));
+                
+                var lstEmployees = employees.ToList();
+                var employeelist = EmployeeBacs(lstEmployees, terminalTemplates, templateType);
                 return employeelist;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
-        private static List<DataStructures.EmployeeBac> EmployeeBacs(IEnumerable<Employee> employees)
+        private static List<DataStructures.EmployeeBac> EmployeeBacs(IEnumerable<Employee> employees, bool? terminalTemplates, string templateType)
         {
             var employeelist = employees.Select(employee => new DataStructures.EmployeeBac
             {
@@ -142,7 +190,7 @@ namespace WCFServiceWebRole1
                 Surname = employee.Surname,
                 BioAccessId = employee.BioAccess_ID,
                 RsaId = employee.RSA_ID,
-                Templates = TemplateBacs(employee.Templates)
+                Templates = TemplateBacs(employee.Templates, terminalTemplates, templateType)
             }).ToList();
             return employeelist;
         }
@@ -153,7 +201,7 @@ namespace WCFServiceWebRole1
             var employees =
                 (from p in ctx.Employees select p).Where(x => x.Customer_ID == customerId).ToList();
 
-            return EmployeeBacs(employees);
+            return EmployeeBacs(employees, null, null);
         }
 
         public List<DataStructures.EmployeeBac> GetEmployeesPerGroup(int groupId)
@@ -162,13 +210,16 @@ namespace WCFServiceWebRole1
             var employees =
                 (from p in ctx.Employees select p).Where(x => x.EmployeeGroups.Any(c => c.Group_ID == groupId)).ToList();
 
-            return EmployeeBacs(employees);
+            return EmployeeBacs(employees, null, null);
         }
 
-        public string CreateUpdateEmployees(ref IEnumerable<DataStructures.EmployeeBac> employees)
+        public string CreateUpdateEmployees(ref IEnumerable<DataStructures.EmployeeBac> employees, int customerId)
         {
             var ctx = new BioAccessCloudEntities();
-            foreach (var employee in employees)
+            var enumerable = employees as IList<DataStructures.EmployeeBac> ?? employees.ToList();            
+            FindAndDeleteUnusedEmployees(enumerable, ctx, customerId);
+            
+            foreach (var employee in enumerable)
             {
                 //Determine add or edit
                 if (ctx.Employees.Any(x => x.BioAccess_ID == employee.BioAccessId))
@@ -204,72 +255,136 @@ namespace WCFServiceWebRole1
             return "";
         }
 
+        private static void FindAndDeleteUnusedEmployees(IEnumerable<DataStructures.EmployeeBac> employees, BioAccessCloudEntities ctx, int customerId)
+        {
+            var employeeBacs = employees as IList<DataStructures.EmployeeBac> ?? employees.ToList();
+            var employeeList = employeeBacs.Select(employee => employee.EmployeeId).ToList();
+
+            var toDelete =
+                (from e in ctx.Employees
+                 where !employeeList.Contains(e.Employee_ID) && e.Customer_ID == customerId
+                    select e);
+            var deleteList = toDelete.ToList().Select(employee => employee.Employee_ID).ToList();
+
+            //REMOVE GROUP ASSIGNMENTS
+            RemoveGroupAssignmentsForEmployees(deleteList);
+
+            //REMOVE TEMPLATES
+            RemoveTemplatesForEmployees(deleteList);
+
+            //REMOVE EMPLOYEE
+            ctx.Employees.RemoveRange(toDelete);
+            ctx.SaveChanges();
+        }
+
+        private static void RemoveGroupAssignmentsForEmployees(List<int> employeeIds)
+        {
+            var ctx = new BioAccessCloudEntities();
+            var toDelete = (from e in ctx.EmployeeGroups where employeeIds.Contains(e.Employee_ID) select e);
+            ctx.EmployeeGroups.RemoveRange(toDelete);
+            ctx.SaveChanges();
+        }
+
+        private static void RemoveTemplatesForEmployees(List<int> employeeIds)
+        {
+            var ctx = new BioAccessCloudEntities();
+            var toDelete = (from e in ctx.Templates where employeeIds.Contains(e.Employee_ID) select e);
+            ctx.Templates.RemoveRange(toDelete);
+            ctx.SaveChanges();
+        }
+
         #endregion
 
         #region Templates
 
-        private static List<DataStructures.TemplateBac> TemplateBacs(IEnumerable<Template> templates)
+        private static List<DataStructures.TemplateBac> TemplateBacs(IEnumerable<Template> templates,
+            bool? terminalTemplates, string templateType)
         {
-            var templatelist =
-                templates.Select(
-                    template =>
-                        template.FingerNumber != null
-                            ? (template.BioAccess_ID != null
-                                ? new DataStructures.TemplateBac
-                                {
-                                    BioAccessId = (Guid) template.BioAccess_ID,
-                                    EmployeeId = template.Employee_ID,
-                                    FingerNumber = (short) template.FingerNumber,
-                                    Template = template.Template1,
-                                    TemplateId = template.Template_ID,
-                                    TemplateType = template.TemplateType.Description
-                                }
-                                : null)
-                            : null).ToList();
-            return templatelist;
+            var templateList = new List<DataStructures.TemplateBac>();
+            foreach (var template in templates)
+            {
+                if (terminalTemplates != null)
+                {
+                    if (template.TerminalFP != terminalTemplates)
+                        continue;
+                }
+                if (templateType != null)
+                {
+                    if (templateType != template.TemplateType.Description)
+                        continue;
+                }
+
+                var item = new DataStructures.TemplateBac
+                {
+                    BioAccessId = template.BioAccess_ID,
+                    EmployeeId = template.Employee_ID,
+                    FingerNumber = template.FingerNumber,
+                    Template = RemoveTemplateTrailingZeros(template.Template1, template.TemplateType),
+                    TemplateId = template.Template_ID,
+                    TemplateType = template.TemplateType.Description,
+                    TerminalFp = template.TerminalFP
+                };
+                templateList.Add(item);
+            }
+            return templateList;
         }
 
-        public string CreateUpdateTemplates(IEnumerable<DataStructures.TemplateBac> templates)
-        {
+        public string CreateUpdateTemplates(IEnumerable<DataStructures.TemplateBac> templates, int customerId)
+        {          
             var ctx = new BioAccessCloudEntities();
-            foreach (var template in templates)
+            var templateBacs = templates as IList<DataStructures.TemplateBac> ?? templates.ToList();
+            
+            FindAndDeleteUnusedTemplates(templateBacs, ctx, customerId);
+
+            foreach (var template in templateBacs)
             {
                 //Get template Type
                 var template1 = template;
-                var templateType = ctx.TemplateTypes.Where(x => x.Description == template1.TemplateType).ToList()[0].TemplateType_ID;
+                var templateType =
+                    ctx.TemplateTypes.First(x => x.Description == template1.TemplateType)
+                        .TemplateType_ID;
 
-                //Determine add or edit
                 if (ctx.Templates.Any(x => x.BioAccess_ID == template.BioAccessId))
                 {
-                    //Already exists and needs to be updated
-                    var localTemplate =
-                        ctx.Templates.First(
-                            x => x.BioAccess_ID == template.BioAccessId);
+                    //Already exists - UPDATE
+                    var localTemplate = ctx.Templates.First(x => x.BioAccess_ID == template.BioAccessId);
+                    localTemplate.Employee_ID = template.EmployeeId;
                     localTemplate.FingerNumber = template.FingerNumber;
                     localTemplate.Template1 = template.Template;
                     localTemplate.TemplateType_ID = templateType;
-                    localTemplate.Employee_ID = template.EmployeeId;
-                    localTemplate.BioAccess_ID = template.BioAccessId;
-
+                    localTemplate.TerminalFP = template.TerminalFp;
                     ctx.SaveChanges();
                 }
                 else
-                {
-                    //Does not exist and new site needs to be created
+                {                    
+                    //Create structure
                     var localTemplate = new Template
                     {
                         FingerNumber = template.FingerNumber,
                         Template1 = template.Template,
                         TemplateType_ID = templateType,
                         Employee_ID = template.EmployeeId,
-                        BioAccess_ID = template.BioAccessId
+                        BioAccess_ID = template.BioAccessId,
+                        TerminalFP = template.TerminalFp
                     };
                     ctx.Templates.Add(localTemplate);
+                    ctx.SaveChanges();
                 }
             }
-            //Commit after all transactions have been completed
-            ctx.SaveChanges();
+            //Commit after all transactions have been completed            
             return "";
+        }
+
+        private static void FindAndDeleteUnusedTemplates(IEnumerable<DataStructures.TemplateBac> templates, BioAccessCloudEntities ctx, int customerId)
+        {
+            //Find unSynced templates for a customer and delete them!
+            var templateList = templates.Select(template => template.TemplateId).ToList();
+            var toDelete =
+                (from e in ctx.Templates
+                    where !templateList.Contains(e.Template_ID) && e.Employee.Customer_ID == customerId
+                    select e);
+            ctx.Templates.RemoveRange(toDelete);
+            ctx.SaveChanges();
         }
 
         public List<DataStructures.TemplateTypeBac> GetTemplateTypes()
@@ -291,10 +406,13 @@ namespace WCFServiceWebRole1
         #region Groups
 
         //Groups
-        public string CreateUpdateGroups(ref IEnumerable<DataStructures.GroupBac> groups)
+        public string CreateUpdateGroups(ref IEnumerable<DataStructures.GroupBac> groups, int customerId)
         {
             var ctx = new BioAccessCloudEntities();
-            foreach (var group in groups)
+            var groupBacs = groups as IList<DataStructures.GroupBac> ?? groups.ToList();
+            FindAndDeleteUnusedGroups(groupBacs, ctx, customerId);
+
+            foreach (var group in groupBacs)
             {
                 //Determine add or edit
                 if (ctx.Groups.Any(x => x.BioAccess_ID == group.BioAccessId))
@@ -326,6 +444,25 @@ namespace WCFServiceWebRole1
 
             
             return "";
+        }
+
+        private static void FindAndDeleteUnusedGroups(IEnumerable<DataStructures.GroupBac> groups, BioAccessCloudEntities ctx, int customerId)
+        {
+            var groupBacs = groups as IList<DataStructures.GroupBac> ?? groups.ToList();
+            var groupList = groupBacs.Select(group => group.GroupId).ToList();
+
+            var toDelete =
+                (from e in ctx.Groups
+                 where !groupList.Contains(e.Group_ID) && e.Customer_ID == customerId
+                 select e);
+            var deleteList = toDelete.ToList().Select(group => group.Group_ID).ToList();
+
+            //REMOVE GROUP ASSIGNMENTS
+            RemoveGroupAssignmentsGroups(deleteList);
+
+            //REMOVE GROUPS
+            ctx.Groups.RemoveRange(toDelete);
+            ctx.SaveChanges();
         }
 
         public string CreateUpdateGroupRelations(IEnumerable<DataStructures.EmployeeGroupBac> employeeGroups, int customerId)
@@ -378,7 +515,7 @@ namespace WCFServiceWebRole1
                 AttendanceTransactionId = transaction.AttendanceTransaction_ID,
                 Downloaded = transaction.Downloaded,
                 Emei = transaction.EMEI,
-                Employee = EmployeeBacs(new List<Employee>() {transaction.Employee})[0],
+                Employee = EmployeeBacs(new List<Employee>() {transaction.Employee}, null, null)[0],
                 EmployeeId = transaction.Employee_ID,
                 InOut = transaction.InOut,
                 Latitude = transaction.Latitude,
@@ -406,6 +543,44 @@ namespace WCFServiceWebRole1
             ctx.SaveChanges();
             return "";
         }
+
+        #endregion
+
+        #region Utilities
+
+        private static byte[] RemoveTemplateTrailingZeros(byte[] ucFp, TemplateType type)
+        {
+            try
+            {
+                if (type.Description == "MorphoPkMat")
+                {
+                    var ucNew = new byte[512];
+                    Array.Copy(ucFp, ucNew, 512);
+                    return ucNew;
+                }
+                else
+                    return ucFp;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        //private static List<int> IndexOfSequence(byte[] buffer, byte[] pattern, int startIndex)
+        //{
+        //    var positions = new List<int>();
+        //    var i = Array.IndexOf<byte>(buffer, pattern[0], startIndex);
+        //    while (i >= 0 && i <= buffer.Length - pattern.Length)
+        //    {
+        //        var segment = new byte[pattern.Length];
+        //        Buffer.BlockCopy(buffer, i, segment, 0, pattern.Length);
+        //        if (segment.SequenceEqual<byte>(pattern))
+        //            positions.Add(i);
+        //        i = Array.IndexOf<byte>(buffer, pattern[0], i + pattern.Length);
+        //    }
+        //    return positions;
+        //}
 
         #endregion
 

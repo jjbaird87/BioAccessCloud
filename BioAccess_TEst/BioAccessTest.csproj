@@ -88,6 +88,9 @@
     <None Include="Service References\BioAccessCloudBasic\BioAccess_TEst.BioAccessCloudBasic.CreateUpdateSitesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\BioAccessCloudBasic\BioAccess_TEst.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BioAccessCloudBasic\BioAccess_TEst.BioAccessCloudBasic.DataStructuresEmployeeBac.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

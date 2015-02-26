@@ -62,7 +62,7 @@ namespace WCFServiceWebRole1
              [DataMember]
             public int TemplateId { get; set; }
             [DataMember]
-            public  short FingerNumber { get; set; }
+            public  short? FingerNumber { get; set; }
             [DataMember]
             public byte[] Template { get; set; }
             [DataMember]
@@ -70,7 +70,9 @@ namespace WCFServiceWebRole1
             [DataMember]
             public int EmployeeId { get; set; }
             [DataMember]
-            public Guid BioAccessId { get; set; }
+            public Guid? BioAccessId { get; set; }
+            [DataMember]
+            public bool? TerminalFp { get; set; }
         }
 
         [DataContract]

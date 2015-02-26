@@ -74,6 +74,7 @@
     <Property Name="TemplateType_ID" Type="int" Nullable="false" />
     <Property Name="Employee_ID" Type="int" Nullable="false" />
     <Property Name="BioAccess_ID" Type="uniqueidentifier" />
+    <Property Name="TerminalFP" Type="bit" />
   </EntityType>
   <EntityType Name="TemplateType">
     <Key>

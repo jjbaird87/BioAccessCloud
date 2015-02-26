@@ -46,6 +46,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="siteId" type="xs:int" />
+        <xs:element minOccurs="0" name="terminalTemplates" nillable="true" type="xs:boolean" />
+        <xs:element minOccurs="0" name="templateType" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -56,10 +58,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetEmployeesPerCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="customerId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEmployeesPerCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="GetEmployeesPerCustomerResult" nillable="true" type="q5:ArrayOfDataStructures.EmployeeBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CreateUpdateSites">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="sites" nillable="true" type="q5:ArrayOfDataStructures.SiteBac" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="sites" nillable="true" type="q6:ArrayOfDataStructures.SiteBac" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -67,6 +83,111 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="CreateUpdateSitesResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="sites" nillable="true" type="q7:ArrayOfDataStructures.SiteBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUpdateGroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="groups" nillable="true" type="q8:ArrayOfDataStructures.GroupBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUpdateGroupsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateUpdateGroupsResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="groups" nillable="true" type="q9:ArrayOfDataStructures.GroupBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUpdateGroupRelations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="employeeGroups" nillable="true" type="q10:ArrayOfDataStructures.EmployeeGroupBac" />
+        <xs:element minOccurs="0" name="customerId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUpdateGroupRelationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateUpdateGroupRelationsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUpdateTemplates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="templates" nillable="true" type="q11:ArrayOfDataStructures.TemplateBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUpdateTemplatesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateUpdateTemplatesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUpdateEmployees">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="employees" nillable="true" type="q12:ArrayOfDataStructures.EmployeeBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUpdateEmployeesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateUpdateEmployeesResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="employees" nillable="true" type="q13:ArrayOfDataStructures.EmployeeBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEmployeesPerGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="groupId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEmployeesPerGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="GetEmployeesPerGroupResult" nillable="true" type="q14:ArrayOfDataStructures.EmployeeBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="customerId" type="xs:int" />
+        <xs:element minOccurs="0" name="startDate" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endDate" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="downloaded" nillable="true" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="GetTransactionsResult" nillable="true" type="q15:ArrayOfDataStructures.AttendanceTransactionBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertNewTransactions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="transactions" nillable="true" type="q16:ArrayOfDataStructures.AttendanceTransactionBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertNewTransactionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertNewTransactionsResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

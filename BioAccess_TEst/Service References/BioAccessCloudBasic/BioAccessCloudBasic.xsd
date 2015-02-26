@@ -46,6 +46,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="siteId" type="xs:int" />
+        <xs:element minOccurs="0" name="terminalTemplates" nillable="true" type="xs:boolean" />
+        <xs:element minOccurs="0" name="templateType" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -155,6 +157,37 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="GetEmployeesPerGroupResult" nillable="true" type="q14:ArrayOfDataStructures.EmployeeBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="customerId" type="xs:int" />
+        <xs:element minOccurs="0" name="startDate" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endDate" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="downloaded" nillable="true" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="GetTransactionsResult" nillable="true" type="q15:ArrayOfDataStructures.AttendanceTransactionBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertNewTransactions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="transactions" nillable="true" type="q16:ArrayOfDataStructures.AttendanceTransactionBac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertNewTransactionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertNewTransactionsResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

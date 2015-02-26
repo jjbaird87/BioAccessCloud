@@ -50,7 +50,7 @@ namespace BioAccessTest_Production
         public void GetEmployeesPerSite()
         {
             var client = new BioAccessCloudBasicClient();
-            var employees = client.GetEmployeesPerSite(1);
+            var employees = client.GetEmployeesPerSite(5, true, "MorphoPkMat");
             var count = employees.Count();
             Assert.AreNotSame(0, employees.Count());
         }

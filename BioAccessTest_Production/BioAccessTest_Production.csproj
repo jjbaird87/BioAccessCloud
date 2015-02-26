@@ -76,7 +76,22 @@
     <None Include="Service References\BioAccessCloudBasic\BioAccessCloudBasic2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\BioAccessCloudBasic\BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateEmployeesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BioAccessCloudBasic\BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateGroupsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BioAccessCloudBasic\BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateSitesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BioAccessCloudBasic\BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BioAccessCloudBasic\BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BioAccessCloudBasic\BioAccessTest_Production.BioAccessCloudBasic.DataStructuresGroupBac.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\BioAccessCloudBasic\BioAccessTest_Production.BioAccessCloudBasic.DataStructuresLoginResponse.datasource">

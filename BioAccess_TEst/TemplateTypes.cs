@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BioAccess_TEst
 {
     [TestClass]
-    public class Templates
+    public class TemplateTypes
     {
         [TestMethod]
         public void GetTemplateTypes()

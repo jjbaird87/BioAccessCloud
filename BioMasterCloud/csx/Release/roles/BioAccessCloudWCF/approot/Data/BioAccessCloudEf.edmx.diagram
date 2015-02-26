@@ -19,10 +19,10 @@
         <EntityTypeShape EntityType="BioAccessCloudModel.Site" Width="1.5" PointX="2.75" PointY="8" />
         <AssociationConnector Association="BioAccessCloudModel.FK_Site_0" />
         <AssociationConnector Association="BioAccessCloudModel.FK_Group_0" />
-        <EntityTypeShape EntityType="BioAccessCloudModel.Template" Width="1.5" PointX="4.25" PointY="10.875" />
+        <EntityTypeShape EntityType="BioAccessCloudModel.Template" Width="1.5" PointX="3.5" PointY="11" />
         <AssociationConnector Association="BioAccessCloudModel.FK_Templates_0" />
         <AssociationConnector Association="BioAccessCloudModel.FK_Templates_1" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

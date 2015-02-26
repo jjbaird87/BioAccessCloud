@@ -235,6 +235,7 @@
     <Property Name="TemplateType_ID" Type="Int32" Nullable="false" />
     <Property Name="Employee_ID" Type="Int32" Nullable="false" />
     <Property Name="BioAccess_ID" Type="Guid" />
+    <Property Name="TerminalFP" Type="Boolean" />
     <NavigationProperty Name="Employee" Relationship="BioAccessCloudModel.FK_Templates_0" FromRole="Template" ToRole="Employee" />
     <NavigationProperty Name="TemplateType" Relationship="BioAccessCloudModel.FK_Templates_1" FromRole="Template" ToRole="TemplateType" />
   </EntityType>

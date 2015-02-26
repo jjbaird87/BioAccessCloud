@@ -18,25 +18,25 @@ namespace WCFServiceWebRole1
         List<DataStructures.SiteBac> GetSitesPerCustomer(int customerId);
 
         [OperationContract]
-        List<DataStructures.EmployeeBac> GetEmployeesPerSite(int siteId);
+        List<DataStructures.EmployeeBac> GetEmployeesPerSite(int siteId, bool? terminalTemplates, string templateType);
 
         [OperationContract]
         List<DataStructures.EmployeeBac> GetEmployeesPerCustomer(int customerId);
 
         [OperationContract]
-        string CreateUpdateSites(ref IEnumerable<DataStructures.SiteBac> sites);
+        string CreateUpdateSites(ref IEnumerable<DataStructures.SiteBac> sites, int customerId);
 
         [OperationContract]
-        string CreateUpdateGroups(ref IEnumerable<DataStructures.GroupBac> groups);
+        string CreateUpdateGroups(ref IEnumerable<DataStructures.GroupBac> groups, int customerId);
 
         [OperationContract]
         string CreateUpdateGroupRelations(IEnumerable<DataStructures.EmployeeGroupBac> employeeGroups, int customerId);
 
         [OperationContract]
-        string CreateUpdateTemplates(IEnumerable<DataStructures.TemplateBac> templates);
+        string CreateUpdateTemplates(IEnumerable<DataStructures.TemplateBac> templates, int customerId);
 
         [OperationContract]
-        string CreateUpdateEmployees(ref IEnumerable<DataStructures.EmployeeBac> employees);
+        string CreateUpdateEmployees(ref IEnumerable<DataStructures.EmployeeBac> employees, int customerId);
 
         [OperationContract]
         List<DataStructures.EmployeeBac> GetEmployeesPerGroup(int groupId);
@@ -47,7 +47,6 @@ namespace WCFServiceWebRole1
 
         [OperationContract]
         string InsertNewTransactions(IEnumerable<DataStructures.AttendanceTransactionBac> transactions);
-
     }
 
 

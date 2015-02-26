@@ -31,11 +31,59 @@
   <wsdl:message name="IBioAccessCloudBasic_GetEmployeesPerSite_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetEmployeesPerSiteResponse" />
   </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_GetEmployeesPerCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesPerCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_GetEmployeesPerCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesPerCustomerResponse" />
+  </wsdl:message>
   <wsdl:message name="IBioAccessCloudBasic_CreateUpdateSites_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateUpdateSites" />
   </wsdl:message>
   <wsdl:message name="IBioAccessCloudBasic_CreateUpdateSites_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateUpdateSitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_CreateUpdateGroups_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUpdateGroups" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_CreateUpdateGroups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUpdateGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_CreateUpdateGroupRelations_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUpdateGroupRelations" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_CreateUpdateGroupRelations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUpdateGroupRelationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_CreateUpdateTemplates_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUpdateTemplates" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_CreateUpdateTemplates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUpdateTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_CreateUpdateEmployees_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUpdateEmployees" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_CreateUpdateEmployees_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUpdateEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_GetEmployeesPerGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesPerGroup" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_GetEmployeesPerGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesPerGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_GetTransactions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactions" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_GetTransactions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_InsertNewTransactions_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertNewTransactions" />
+  </wsdl:message>
+  <wsdl:message name="IBioAccessCloudBasic_InsertNewTransactions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertNewTransactionsResponse" />
   </wsdl:message>
   <wsdl:portType name="IBioAccessCloudBasic">
     <wsdl:operation name="Login">
@@ -54,9 +102,41 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerSite" message="tns:IBioAccessCloudBasic_GetEmployeesPerSite_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerSiteResponse" message="tns:IBioAccessCloudBasic_GetEmployeesPerSite_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetEmployeesPerCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerCustomer" message="tns:IBioAccessCloudBasic_GetEmployeesPerCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerCustomerResponse" message="tns:IBioAccessCloudBasic_GetEmployeesPerCustomer_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateUpdateSites">
       <wsdl:input wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateSites" message="tns:IBioAccessCloudBasic_CreateUpdateSites_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateSitesResponse" message="tns:IBioAccessCloudBasic_CreateUpdateSites_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateGroups">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateGroups" message="tns:IBioAccessCloudBasic_CreateUpdateGroups_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateGroupsResponse" message="tns:IBioAccessCloudBasic_CreateUpdateGroups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateGroupRelations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateGroupRelations" message="tns:IBioAccessCloudBasic_CreateUpdateGroupRelations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateGroupRelationsResponse" message="tns:IBioAccessCloudBasic_CreateUpdateGroupRelations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateTemplates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateTemplates" message="tns:IBioAccessCloudBasic_CreateUpdateTemplates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateTemplatesResponse" message="tns:IBioAccessCloudBasic_CreateUpdateTemplates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateEmployees">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateEmployees" message="tns:IBioAccessCloudBasic_CreateUpdateEmployees_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateEmployeesResponse" message="tns:IBioAccessCloudBasic_CreateUpdateEmployees_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeesPerGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerGroup" message="tns:IBioAccessCloudBasic_GetEmployeesPerGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerGroupResponse" message="tns:IBioAccessCloudBasic_GetEmployeesPerGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/GetTransactions" message="tns:IBioAccessCloudBasic_GetTransactions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/GetTransactionsResponse" message="tns:IBioAccessCloudBasic_GetTransactions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertNewTransactions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/InsertNewTransactions" message="tns:IBioAccessCloudBasic_InsertNewTransactions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBioAccessCloudBasic/InsertNewTransactionsResponse" message="tns:IBioAccessCloudBasic_InsertNewTransactions_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBioAccessCloudBasic" type="tns:IBioAccessCloudBasic">
@@ -97,8 +177,80 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetEmployeesPerCustomer">
+      <soap:operation soapAction="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CreateUpdateSites">
       <soap:operation soapAction="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateSites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateGroups">
+      <soap:operation soapAction="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateGroupRelations">
+      <soap:operation soapAction="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateGroupRelations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateTemplates">
+      <soap:operation soapAction="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateTemplates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateEmployees">
+      <soap:operation soapAction="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateEmployees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeesPerGroup">
+      <soap:operation soapAction="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactions">
+      <soap:operation soapAction="http://tempuri.org/IBioAccessCloudBasic/GetTransactions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNewTransactions">
+      <soap:operation soapAction="http://tempuri.org/IBioAccessCloudBasic/InsertNewTransactions" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

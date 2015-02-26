@@ -79,6 +79,7 @@
           <Property Name="TemplateType_ID" Type="int" Nullable="false" />
           <Property Name="Employee_ID" Type="int" Nullable="false" />
           <Property Name="BioAccess_ID" Type="uniqueidentifier" />
+          <Property Name="TerminalFP" Type="bit" />
         </EntityType>
         <EntityType Name="TemplateType">
           <Key>
@@ -300,7 +301,7 @@
             <End Role="TemplateType" EntitySet="TemplateTypes" />
             <End Role="Template" EntitySet="Templates" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="AttendanceTransaction">
           <Key>
             <PropertyRef Name="AttendanceTransaction_ID" />
@@ -490,6 +491,7 @@
           <Property Name="TemplateType_ID" Type="Int32" Nullable="false" />
           <Property Name="Employee_ID" Type="Int32" Nullable="false" />
           <Property Name="BioAccess_ID" Type="Guid" />
+          <Property Name="TerminalFP" Type="Boolean" />
           <NavigationProperty Name="Employee" Relationship="BioAccessCloudModel.FK_Templates_0" FromRole="Template" ToRole="Employee" />
           <NavigationProperty Name="TemplateType" Relationship="BioAccessCloudModel.FK_Templates_1" FromRole="Template" ToRole="TemplateType" />
         </EntityType>
@@ -608,6 +610,7 @@
           <EntitySetMapping Name="Templates">
             <EntityTypeMapping TypeName="BioAccessCloudModel.Template">
               <MappingFragment StoreEntitySet="Template">
+                <ScalarProperty Name="TerminalFP" ColumnName="TerminalFP" />
                 <ScalarProperty Name="BioAccess_ID" ColumnName="BioAccess_ID" />
                 <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
                 <ScalarProperty Name="TemplateType_ID" ColumnName="TemplateType_ID" />
