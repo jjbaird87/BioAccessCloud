@@ -238,6 +238,7 @@
     <Property Name="TerminalFP" Type="Boolean" />
     <NavigationProperty Name="Employee" Relationship="BioAccessCloudModel.FK_Templates_0" FromRole="Template" ToRole="Employee" />
     <NavigationProperty Name="TemplateType" Relationship="BioAccessCloudModel.FK_Templates_1" FromRole="Template" ToRole="TemplateType" />
+    <Property Name="TemplateSize" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_Templates_0">
     <End Type="BioAccessCloudModel.Employee" Role="Employee" Multiplicity="1">

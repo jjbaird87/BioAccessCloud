@@ -314,12 +314,15 @@ namespace WCFServiceWebRole1
                         continue;
                 }
 
+                var correctSize = new byte[template.TemplateSize];
+                Array.Copy(template.Template1, correctSize, template.TemplateSize);
                 var item = new DataStructures.TemplateBac
                 {
                     BioAccessId = template.BioAccess_ID,
                     EmployeeId = template.Employee_ID,
                     FingerNumber = template.FingerNumber,
-                    Template = RemoveTemplateTrailingZeros(template.Template1, template.TemplateType),
+                    Template = correctSize,
+                    TemplateSize = template.TemplateSize,
                     TemplateId = template.Template_ID,
                     TemplateType = template.TemplateType.Description,
                     TerminalFp = template.TerminalFP
@@ -351,6 +354,7 @@ namespace WCFServiceWebRole1
                     localTemplate.Employee_ID = template.EmployeeId;
                     localTemplate.FingerNumber = template.FingerNumber;
                     localTemplate.Template1 = template.Template;
+                    localTemplate.TemplateSize = template.TemplateSize;
                     localTemplate.TemplateType_ID = templateType;
                     localTemplate.TerminalFP = template.TerminalFp;
                     ctx.SaveChanges();
@@ -362,6 +366,7 @@ namespace WCFServiceWebRole1
                     {
                         FingerNumber = template.FingerNumber,
                         Template1 = template.Template,
+                        TemplateSize = template.TemplateSize,
                         TemplateType_ID = templateType,
                         Employee_ID = template.EmployeeId,
                         BioAccess_ID = template.BioAccessId,
@@ -546,43 +551,6 @@ namespace WCFServiceWebRole1
 
         #endregion
 
-        #region Utilities
-
-        private static byte[] RemoveTemplateTrailingZeros(byte[] ucFp, TemplateType type)
-        {
-            try
-            {
-                if (type.Description == "MorphoPkMat")
-                {
-                    var ucNew = new byte[512];
-                    Array.Copy(ucFp, ucNew, 512);
-                    return ucNew;
-                }
-                else
-                    return ucFp;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-
-        //private static List<int> IndexOfSequence(byte[] buffer, byte[] pattern, int startIndex)
-        //{
-        //    var positions = new List<int>();
-        //    var i = Array.IndexOf<byte>(buffer, pattern[0], startIndex);
-        //    while (i >= 0 && i <= buffer.Length - pattern.Length)
-        //    {
-        //        var segment = new byte[pattern.Length];
-        //        Buffer.BlockCopy(buffer, i, segment, 0, pattern.Length);
-        //        if (segment.SequenceEqual<byte>(pattern))
-        //            positions.Add(i);
-        //        i = Array.IndexOf<byte>(buffer, pattern[0], i + pattern.Length);
-        //    }
-        //    return positions;
-        //}
-
-        #endregion
 
     }
 }

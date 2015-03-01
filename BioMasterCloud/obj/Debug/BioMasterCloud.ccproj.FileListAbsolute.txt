@@ -59,3 +59,5 @@ C:\Users\JJ\Documents\Visual Studio 2013\Projects\BioMasterCloud\BioMasterCloud\
 C:\Users\JJ\Documents\Visual Studio 2013\Projects\BioMasterCloud\BioMasterCloud\obj\Debug\BioAccessCloudWCF\bin\zh-Hant\Microsoft.Data.OData.resources.dll
 C:\Users\JJ\Documents\Visual Studio 2013\Projects\BioMasterCloud\BioMasterCloud\obj\Debug\BioAccessCloudWCF\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
 C:\Users\JJ\Documents\Visual Studio 2013\Projects\BioMasterCloud\BioMasterCloud\obj\Debug\BioAccessCloudWCF\bin\zh-Hant\System.Spatial.resources.dll
+D:\GitHub Source\BioAccessCloud\BioMasterCloud\bin\Debug\ServiceConfiguration.cscfg
+D:\GitHub Source\BioAccessCloud\BioMasterCloud\bin\Debug\ServiceDefinition.csdef

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BioMasterCloud" generation="1" functional="0" release="0" Id="0ac3bcb4-c9fe-4ab5-bf16-68594861b1f4" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BioMasterCloud" generation="1" functional="0" release="0" Id="895d638d-c1b8-4f88-8374-ee435d80c3fa" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="BioMasterCloudGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -32,7 +32,7 @@
       </maps>
       <components>
         <groupHascomponents>
-          <role name="BioAccessCloudWCF" generation="1" functional="0" release="0" software="C:\Users\JJ\Documents\Visual Studio 2013\Projects\BioMasterCloud\BioMasterCloud\csx\Release\roles\BioAccessCloudWCF" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="-1" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
+          <role name="BioAccessCloudWCF" generation="1" functional="0" release="0" software="D:\GitHub Source\BioAccessCloud\BioMasterCloud\csx\Release\roles\BioAccessCloudWCF" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="-1" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
             <componentports>
               <inPort name="Endpoint1" protocol="http" portRanges="80" />
             </componentports>
@@ -59,9 +59,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="d6401450-c131-4b01-a505-cce3ed362973" ref="Microsoft.RedDog.Contract\ServiceContract\BioMasterCloudContract@ServiceDefinition">
+    <implementation Id="5c6fc05d-9d84-49c2-8d64-d46bf886985f" ref="Microsoft.RedDog.Contract\ServiceContract\BioMasterCloudContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="93aa1ec1-3a9f-4386-82d6-3e59667b7daf" ref="Microsoft.RedDog.Contract\Interface\BioAccessCloudWCF:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="f831ff7b-c0a1-4a2e-b7f0-4c30b680c186" ref="Microsoft.RedDog.Contract\Interface\BioAccessCloudWCF:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/BioMasterCloud/BioMasterCloudGroup/BioAccessCloudWCF:Endpoint1" />
           </inPort>

@@ -66,6 +66,8 @@ namespace WCFServiceWebRole1
             [DataMember]
             public byte[] Template { get; set; }
             [DataMember]
+            public int TemplateSize { get; set; }
+            [DataMember]
             public string TemplateType { get; set; }
             [DataMember]
             public int EmployeeId { get; set; }

@@ -4,3 +4,9 @@ C:\Users\JJ\Documents\Visual Studio 2013\Projects\BioMasterCloud\BioAccess_TEst\
 C:\Users\JJ\Documents\Visual Studio 2013\Projects\BioMasterCloud\BioAccess_TEst\obj\Debug\BioAccessTest.csprojResolveAssemblyReference.cache
 C:\Users\JJ\Documents\Visual Studio 2013\Projects\BioMasterCloud\BioAccess_TEst\obj\Debug\BioAccess_TEst.dll
 C:\Users\JJ\Documents\Visual Studio 2013\Projects\BioMasterCloud\BioAccess_TEst\obj\Debug\BioAccess_TEst.pdb
+D:\GitHub Source\BioAccessCloud\BioAccess_TEst\bin\Debug\BioAccess_TEst.dll.config
+D:\GitHub Source\BioAccessCloud\BioAccess_TEst\bin\Debug\BioAccess_TEst.dll
+D:\GitHub Source\BioAccessCloud\BioAccess_TEst\bin\Debug\BioAccess_TEst.pdb
+D:\GitHub Source\BioAccessCloud\BioAccess_TEst\obj\Debug\BioAccessTest.csprojResolveAssemblyReference.cache
+D:\GitHub Source\BioAccessCloud\BioAccess_TEst\obj\Debug\BioAccess_TEst.dll
+D:\GitHub Source\BioAccessCloud\BioAccess_TEst\obj\Debug\BioAccess_TEst.pdb

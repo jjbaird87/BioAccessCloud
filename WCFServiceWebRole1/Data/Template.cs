@@ -21,6 +21,7 @@ namespace WCFServiceWebRole1.Data
         public int Employee_ID { get; set; }
         public Nullable<System.Guid> BioAccess_ID { get; set; }
         public Nullable<bool> TerminalFP { get; set; }
+        public int TemplateSize { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual TemplateType TemplateType { get; set; }

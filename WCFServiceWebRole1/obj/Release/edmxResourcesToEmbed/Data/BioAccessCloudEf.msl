@@ -84,6 +84,7 @@
     <EntitySetMapping Name="Templates">
       <EntityTypeMapping TypeName="BioAccessCloudModel.Template">
         <MappingFragment StoreEntitySet="Template">
+          <ScalarProperty Name="TemplateSize" ColumnName="TemplateSize" />
           <ScalarProperty Name="TerminalFP" ColumnName="TerminalFP" />
           <ScalarProperty Name="BioAccess_ID" ColumnName="BioAccess_ID" />
           <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />

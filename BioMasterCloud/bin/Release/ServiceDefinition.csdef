@@ -22,7 +22,7 @@
     </Endpoints>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\JJ\Documents\Visual Studio 2013\Projects\BioMasterCloud\BioMasterCloud\rcf\Release\BioAccessCloudWCFContent\" />
+        <SourceDirectory path="D:\GitHub Source\BioAccessCloud\BioMasterCloud\rcf\Release\BioAccessCloudWCFContent\" />
       </Content>
     </Contents>
   </WebRole>
