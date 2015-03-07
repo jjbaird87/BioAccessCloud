@@ -28,6 +28,7 @@ namespace WCFServiceWebRole1.Data
         public int Customer_ID { get; set; }
         public string RSA_ID { get; set; }
         public Nullable<System.Guid> BioAccess_ID { get; set; }
+        public string Employee_Number { get; set; }
     
         public virtual ICollection<AttendanceTransaction> AttendanceTransactions { get; set; }
         public virtual Customer Customer { get; set; }

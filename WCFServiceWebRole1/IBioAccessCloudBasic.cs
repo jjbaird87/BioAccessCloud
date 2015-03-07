@@ -21,7 +21,7 @@ namespace WCFServiceWebRole1
         List<DataStructures.EmployeeBac> GetEmployeesPerSite(int siteId, bool? terminalTemplates, string templateType);
 
         [OperationContract]
-        List<DataStructures.EmployeeBac> GetEmployeesPerCustomer(int customerId);
+        List<DataStructures.EmployeeBac> GetEmployeesPerCustomer(int customerId, int? employeeId);
 
         [OperationContract]
         string CreateUpdateSites(ref IEnumerable<DataStructures.SiteBac> sites, int customerId);
@@ -46,7 +46,14 @@ namespace WCFServiceWebRole1
             DateTime? endDate, bool? downloaded);
 
         [OperationContract]
-        string InsertNewTransactions(IEnumerable<DataStructures.AttendanceTransactionBac> transactions);
+        string InsertNewTransactions(IEnumerable<DataStructures.AttendanceTransactionInBac> transactions);
+
+        [OperationContract]
+        string InsertNewTransaction(int employeeId, string transactionDate, short inOut, double latitude,
+            double longitude, String emei);
+
+        [OperationContract]
+        string UpdateDownloadedTxPerCustomer(int customerId);
     }
 
 

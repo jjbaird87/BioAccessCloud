@@ -34,6 +34,7 @@
     <Property Name="Customer_ID" Type="int" Nullable="false" />
     <Property Name="RSA_ID" Type="varchar" MaxLength="20" />
     <Property Name="BioAccess_ID" Type="uniqueidentifier" />
+    <Property Name="Employee_Number" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="EmployeeGroup">
     <Key>

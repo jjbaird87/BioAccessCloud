@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BioMasterCloud" generation="1" functional="0" release="0" Id="895d638d-c1b8-4f88-8374-ee435d80c3fa" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BioMasterCloud" generation="1" functional="0" release="0" Id="2337c51d-5555-4dee-b8a6-6c8f48b6a276" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="BioMasterCloudGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -59,9 +59,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="5c6fc05d-9d84-49c2-8d64-d46bf886985f" ref="Microsoft.RedDog.Contract\ServiceContract\BioMasterCloudContract@ServiceDefinition">
+    <implementation Id="85a17a5e-4c36-47fa-bd29-856580281781" ref="Microsoft.RedDog.Contract\ServiceContract\BioMasterCloudContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="f831ff7b-c0a1-4a2e-b7f0-4c30b680c186" ref="Microsoft.RedDog.Contract\Interface\BioAccessCloudWCF:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="696d555e-7591-4bd9-a93c-1238712220c1" ref="Microsoft.RedDog.Contract\Interface\BioAccessCloudWCF:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/BioMasterCloud/BioMasterCloudGroup/BioAccessCloudWCF:Endpoint1" />
           </inPort>

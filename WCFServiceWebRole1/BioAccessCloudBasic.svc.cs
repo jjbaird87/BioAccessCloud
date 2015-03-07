@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.ServiceModel;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -76,8 +77,7 @@ namespace WCFServiceWebRole1
         public string CreateUpdateSites(ref IEnumerable<DataStructures.SiteBac> sites, int customerId)
         {
             var ctx = new BioAccessCloudEntities();
-            var siteBacs = sites as IList<DataStructures.SiteBac> ?? sites.ToList();
-            FindAndDeleteUnusedSites(siteBacs, ctx, customerId);
+            var siteBacs = sites as IList<DataStructures.SiteBac> ?? sites.ToList();            
 
             foreach (var site in siteBacs)
             {
@@ -92,7 +92,7 @@ namespace WCFServiceWebRole1
                     localSite.Customer_ID = site.CustomerId;
                     localSite.BioAccess_ID = site.BioAccessId;
                     ctx.SaveChanges();
-                    site.SiteId = localSite.Site_ID;
+                    site.SiteId = localSite.Site_ID;                   
                 }
                 else
                 {
@@ -110,6 +110,8 @@ namespace WCFServiceWebRole1
                     site.SiteId = localSite.Site_ID;
                 }
             }
+            
+            FindAndDeleteUnusedSites(siteBacs, ctx, customerId);
             
             return "";
         }
@@ -186,6 +188,7 @@ namespace WCFServiceWebRole1
                 Active = employee.Active,
                 CustomerId = employee.Customer_ID,
                 EmployeeId = employee.Employee_ID,
+                EmployeeNo = employee.Employee_Number,
                 Name = employee.Name,
                 Surname = employee.Surname,
                 BioAccessId = employee.BioAccess_ID,
@@ -195,11 +198,14 @@ namespace WCFServiceWebRole1
             return employeelist;
         }
 
-        public List<DataStructures.EmployeeBac> GetEmployeesPerCustomer(int customerId)
+        public List<DataStructures.EmployeeBac> GetEmployeesPerCustomer(int customerId, int? employeeId)
         {
             var ctx = new BioAccessCloudEntities();
             var employees =
-                (from p in ctx.Employees select p).Where(x => x.Customer_ID == customerId).ToList();
+                (from p in ctx.Employees select p).Where(x => x.Customer_ID == customerId);
+
+            if (employeeId != null)
+                employees = employees.Where(x => x.Employee_ID == employeeId);
 
             return EmployeeBacs(employees, null, null);
         }
@@ -211,14 +217,13 @@ namespace WCFServiceWebRole1
                 (from p in ctx.Employees select p).Where(x => x.EmployeeGroups.Any(c => c.Group_ID == groupId)).ToList();
 
             return EmployeeBacs(employees, null, null);
-        }
+        }         
 
         public string CreateUpdateEmployees(ref IEnumerable<DataStructures.EmployeeBac> employees, int customerId)
         {
             var ctx = new BioAccessCloudEntities();
-            var enumerable = employees as IList<DataStructures.EmployeeBac> ?? employees.ToList();            
-            FindAndDeleteUnusedEmployees(enumerable, ctx, customerId);
-            
+
+            var enumerable = employees as IList<DataStructures.EmployeeBac> ?? employees.ToList();
             foreach (var employee in enumerable)
             {
                 //Determine add or edit
@@ -228,11 +233,12 @@ namespace WCFServiceWebRole1
                     var localEmployee = ctx.Employees.First(x => x.BioAccess_ID == employee.BioAccessId);
                     localEmployee.Name = employee.Name;
                     localEmployee.Surname = employee.Surname;
+                    localEmployee.Employee_Number = employee.EmployeeNo;
                     localEmployee.Active = employee.Active;
                     localEmployee.Customer_ID = employee.CustomerId;
                     localEmployee.RSA_ID = employee.RsaId;
                     localEmployee.BioAccess_ID = employee.BioAccessId;
-                    ctx.SaveChanges();
+                    ctx.SaveChanges();                    
                     employee.EmployeeId = localEmployee.Employee_ID;
                 }
                 else
@@ -240,6 +246,7 @@ namespace WCFServiceWebRole1
                     //Does not exist and new site needs to be created
                     var localEmployee = new Employee
                     {
+                        Employee_Number = employee.EmployeeNo,
                         Name = employee.Name,
                         Surname = employee.Surname,
                         Active = employee.Active,
@@ -252,6 +259,9 @@ namespace WCFServiceWebRole1
                     employee.EmployeeId = localEmployee.Employee_ID;
                 }
             }
+            
+            FindAndDeleteUnusedEmployees(enumerable, ctx, customerId);
+
             return "";
         }
 
@@ -321,6 +331,7 @@ namespace WCFServiceWebRole1
                     BioAccessId = template.BioAccess_ID,
                     EmployeeId = template.Employee_ID,
                     FingerNumber = template.FingerNumber,
+                    Base64Template = Convert.ToBase64String(correctSize),
                     Template = correctSize,
                     TemplateSize = template.TemplateSize,
                     TemplateId = template.Template_ID,
@@ -337,8 +348,6 @@ namespace WCFServiceWebRole1
             var ctx = new BioAccessCloudEntities();
             var templateBacs = templates as IList<DataStructures.TemplateBac> ?? templates.ToList();
             
-            FindAndDeleteUnusedTemplates(templateBacs, ctx, customerId);
-
             foreach (var template in templateBacs)
             {
                 //Get template Type
@@ -358,6 +367,7 @@ namespace WCFServiceWebRole1
                     localTemplate.TemplateType_ID = templateType;
                     localTemplate.TerminalFP = template.TerminalFp;
                     ctx.SaveChanges();
+                    template.TemplateId = localTemplate.Template_ID;
                 }
                 else
                 {                    
@@ -374,8 +384,11 @@ namespace WCFServiceWebRole1
                     };
                     ctx.Templates.Add(localTemplate);
                     ctx.SaveChanges();
+                    template.TemplateId = localTemplate.Template_ID;
                 }
             }
+
+            FindAndDeleteUnusedTemplates(templateBacs, ctx, customerId);
             //Commit after all transactions have been completed            
             return "";
         }
@@ -415,7 +428,7 @@ namespace WCFServiceWebRole1
         {
             var ctx = new BioAccessCloudEntities();
             var groupBacs = groups as IList<DataStructures.GroupBac> ?? groups.ToList();
-            FindAndDeleteUnusedGroups(groupBacs, ctx, customerId);
+            
 
             foreach (var group in groupBacs)
             {
@@ -446,7 +459,7 @@ namespace WCFServiceWebRole1
                     group.GroupId = localGroup.Group_ID;
                 }
             }
-
+            FindAndDeleteUnusedGroups(groupBacs, ctx, customerId);
             
             return "";
         }
@@ -531,7 +544,16 @@ namespace WCFServiceWebRole1
             return transactionList;
         }
 
-        public string InsertNewTransactions(IEnumerable<DataStructures.AttendanceTransactionBac> transactions)
+        public string UpdateDownloadedTxPerCustomer(int customerId)
+        {
+            var ctx = new BioAccessCloudEntities();
+            var transactions = ctx.AttendanceTransactions.Where(x => x.Employee.Customer_ID == customerId).ToList();
+            transactions.ForEach(a => a.Downloaded = true);
+            ctx.SaveChanges();
+            return "";
+        }
+
+        public string InsertNewTransactions(IEnumerable<DataStructures.AttendanceTransactionInBac> transactions)
         {
             var ctx = new BioAccessCloudEntities();
             var lstTransactions = transactions.Select(transaction => new AttendanceTransaction
@@ -542,9 +564,32 @@ namespace WCFServiceWebRole1
                 InOut = transaction.InOut,
                 Latitude = transaction.Latitude,
                 Longitude = transaction.Longitude,
-                TransactionDate = transaction.TransactionDateTime
+                TransactionDate =
+                    DateTime.ParseExact(transaction.TransactionDateTime, "yyyy/MM/dd HH:mm:ss",
+                        CultureInfo.InvariantCulture)
             }).ToList();
             ctx.AttendanceTransactions.AddRange(lstTransactions);
+            ctx.SaveChanges();
+            return "";
+        }
+
+        public string InsertNewTransaction(int employeeId, string transactionDate, short inOut, double latitude,
+            double longitude, String emei)
+        {
+            var ctx = new BioAccessCloudEntities();
+            var localTransaction = new AttendanceTransaction
+            {
+                Downloaded = false,
+                EMEI = emei,
+                Employee_ID = employeeId,
+                InOut = inOut,
+                Latitude = latitude,
+                Longitude = longitude,
+                TransactionDate =
+                    DateTime.ParseExact(transactionDate, "yyyy/MM/dd HH:mm:ss",
+                        CultureInfo.InvariantCulture)
+            };
+            ctx.AttendanceTransactions.Add(localTransaction);
             ctx.SaveChanges();
             return "";
         }

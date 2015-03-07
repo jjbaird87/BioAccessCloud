@@ -76,6 +76,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="sites" nillable="true" type="q6:ArrayOfDataStructures.SiteBac" />
+        <xs:element minOccurs="0" name="customerId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -91,6 +92,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="groups" nillable="true" type="q8:ArrayOfDataStructures.GroupBac" />
+        <xs:element minOccurs="0" name="customerId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -121,6 +123,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="templates" nillable="true" type="q11:ArrayOfDataStructures.TemplateBac" />
+        <xs:element minOccurs="0" name="customerId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -135,6 +138,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="employees" nillable="true" type="q12:ArrayOfDataStructures.EmployeeBac" />
+        <xs:element minOccurs="0" name="customerId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -180,7 +184,7 @@
   <xs:element name="InsertNewTransactions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="transactions" nillable="true" type="q16:ArrayOfDataStructures.AttendanceTransactionBac" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1" minOccurs="0" name="transactions" nillable="true" type="q16:ArrayOfDataStructures.AttendanceTransactionInBac" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

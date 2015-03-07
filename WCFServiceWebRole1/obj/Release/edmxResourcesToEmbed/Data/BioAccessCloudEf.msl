@@ -29,6 +29,7 @@
     <EntitySetMapping Name="Employees">
       <EntityTypeMapping TypeName="BioAccessCloudModel.Employee">
         <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Employee_Number" ColumnName="Employee_Number" />
           <ScalarProperty Name="BioAccess_ID" ColumnName="BioAccess_ID" />
           <ScalarProperty Name="RSA_ID" ColumnName="RSA_ID" />
           <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />

@@ -66,6 +66,8 @@ namespace WCFServiceWebRole1
             [DataMember]
             public byte[] Template { get; set; }
             [DataMember]
+            public string Base64Template { get; set; }
+            [DataMember]
             public int TemplateSize { get; set; }
             [DataMember]
             public string TemplateType { get; set; }
@@ -93,6 +95,8 @@ namespace WCFServiceWebRole1
         {
             [DataMember]
             public int EmployeeId { get; set; }
+            [DataMember]
+            public string EmployeeNo { get; set; }
             [DataMember]
             public string Name { get; set; }
             [DataMember]
@@ -134,6 +138,27 @@ namespace WCFServiceWebRole1
             public EmployeeBac Employee { get; set; }
             [DataMember]
             public int EmployeeId { get; set; }
+            [DataMember]
+            public string Emei { get; set; }
+            [DataMember]
+            public short InOut { get; set; }
+            [DataMember]
+            public bool Downloaded { get; set; }
+        }
+
+        [DataContract]
+        public class AttendanceTransactionInBac
+        {            
+            [DataMember]
+            public string TransactionDateTime { get; set; }
+            [DataMember]
+            public double Latitude { get; set; }
+            [DataMember]
+            public double Longitude { get; set; }
+            [DataMember]
+            public int EmployeeId { get; set; }
+            [DataMember]
+            public string EmployeeNo { get; set; }
             [DataMember]
             public string Emei { get; set; }
             [DataMember]

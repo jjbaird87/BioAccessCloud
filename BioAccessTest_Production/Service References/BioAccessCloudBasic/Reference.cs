@@ -339,7 +339,7 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
         private string SurnameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac[] TemplatesField;
+        private System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac> TemplatesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -443,7 +443,7 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac[] Templates {
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac> Templates {
             get {
                 return this.TemplatesField;
             }
@@ -475,6 +475,9 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Base64TemplateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> BioAccessIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -490,6 +493,9 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
         private int TemplateIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TemplateSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TemplateTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -502,6 +508,19 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Base64Template {
+            get {
+                return this.Base64TemplateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Base64TemplateField, value) != true)) {
+                    this.Base64TemplateField = value;
+                    this.RaisePropertyChanged("Base64Template");
+                }
             }
         }
         
@@ -566,6 +585,19 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
                 if ((this.TemplateIdField.Equals(value) != true)) {
                     this.TemplateIdField = value;
                     this.RaisePropertyChanged("TemplateId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TemplateSize {
+            get {
+                return this.TemplateSizeField;
+            }
+            set {
+                if ((this.TemplateSizeField.Equals(value) != true)) {
+                    this.TemplateSizeField = value;
+                    this.RaisePropertyChanged("TemplateSize");
                 }
             }
         }
@@ -965,6 +997,147 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DataStructures.AttendanceTransactionInBac", Namespace="http://schemas.datacontract.org/2004/07/WCFServiceWebRole1")]
+    [System.SerializableAttribute()]
+    public partial class DataStructuresAttendanceTransactionInBac : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool DownloadedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmeiField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EmployeeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short InOutField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double LongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TransactionDateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Downloaded {
+            get {
+                return this.DownloadedField;
+            }
+            set {
+                if ((this.DownloadedField.Equals(value) != true)) {
+                    this.DownloadedField = value;
+                    this.RaisePropertyChanged("Downloaded");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Emei {
+            get {
+                return this.EmeiField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmeiField, value) != true)) {
+                    this.EmeiField = value;
+                    this.RaisePropertyChanged("Emei");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int EmployeeId {
+            get {
+                return this.EmployeeIdField;
+            }
+            set {
+                if ((this.EmployeeIdField.Equals(value) != true)) {
+                    this.EmployeeIdField = value;
+                    this.RaisePropertyChanged("EmployeeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short InOut {
+            get {
+                return this.InOutField;
+            }
+            set {
+                if ((this.InOutField.Equals(value) != true)) {
+                    this.InOutField = value;
+                    this.RaisePropertyChanged("InOut");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((this.LatitudeField.Equals(value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((this.LongitudeField.Equals(value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TransactionDateTime {
+            get {
+                return this.TransactionDateTimeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TransactionDateTimeField, value) != true)) {
+                    this.TransactionDateTimeField = value;
+                    this.RaisePropertyChanged("TransactionDateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BioAccessCloudBasic.IBioAccessCloudBasic")]
     public interface IBioAccessCloudBasic {
@@ -976,28 +1149,28 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
         System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresLoginResponse> LoginAsync(string userName, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetTemplateTypes", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetTemplateTypesResponse")]
-        BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateTypeBac[] GetTemplateTypes();
+        System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateTypeBac> GetTemplateTypes();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetTemplateTypes", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetTemplateTypesResponse")]
-        System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateTypeBac[]> GetTemplateTypesAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateTypeBac>> GetTemplateTypesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetSitesPerCustomer", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetSitesPerCustomerResponse")]
-        BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac[] GetSitesPerCustomer(int customerId);
+        System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac> GetSitesPerCustomer(int customerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetSitesPerCustomer", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetSitesPerCustomerResponse")]
-        System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac[]> GetSitesPerCustomerAsync(int customerId);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac>> GetSitesPerCustomerAsync(int customerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerSite", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerSiteResponse")]
-        BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[] GetEmployeesPerSite(int siteId, System.Nullable<bool> terminalTemplates, string templateType);
+        System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac> GetEmployeesPerSite(int siteId, System.Nullable<bool> terminalTemplates, string templateType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerSite", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerSiteResponse")]
-        System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[]> GetEmployeesPerSiteAsync(int siteId, System.Nullable<bool> terminalTemplates, string templateType);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac>> GetEmployeesPerSiteAsync(int siteId, System.Nullable<bool> terminalTemplates, string templateType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerCustomer", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerCustomerResponse")]
-        BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[] GetEmployeesPerCustomer(int customerId);
+        System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac> GetEmployeesPerCustomer(int customerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerCustomer", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerCustomerResponse")]
-        System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[]> GetEmployeesPerCustomerAsync(int customerId);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac>> GetEmployeesPerCustomerAsync(int customerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateSites", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateSitesResponse")]
         BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateSitesResponse CreateUpdateSites(BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateSitesRequest request);
@@ -1014,16 +1187,16 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
         System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateGroupsResponse> CreateUpdateGroupsAsync(BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateGroupsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateGroupRelations", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateGroupRelationsResponse")]
-        string CreateUpdateGroupRelations(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeGroupBac[] employeeGroups, int customerId);
+        string CreateUpdateGroupRelations(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeGroupBac> employeeGroups, int customerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateGroupRelations", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateGroupRelationsResponse")]
-        System.Threading.Tasks.Task<string> CreateUpdateGroupRelationsAsync(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeGroupBac[] employeeGroups, int customerId);
+        System.Threading.Tasks.Task<string> CreateUpdateGroupRelationsAsync(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeGroupBac> employeeGroups, int customerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateTemplates", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateTemplatesResponse")]
-        string CreateUpdateTemplates(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac[] templates);
+        string CreateUpdateTemplates(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac> templates, int customerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateTemplates", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateTemplatesResponse")]
-        System.Threading.Tasks.Task<string> CreateUpdateTemplatesAsync(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac[] templates);
+        System.Threading.Tasks.Task<string> CreateUpdateTemplatesAsync(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac> templates, int customerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateEmployees", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/CreateUpdateEmployeesResponse")]
         BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateEmployeesResponse CreateUpdateEmployees(BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateEmployeesRequest request);
@@ -1033,22 +1206,22 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
         System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateEmployeesResponse> CreateUpdateEmployeesAsync(BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateEmployeesRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerGroup", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerGroupResponse")]
-        BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[] GetEmployeesPerGroup(int groupId);
+        System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac> GetEmployeesPerGroup(int groupId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerGroup", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetEmployeesPerGroupResponse")]
-        System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[]> GetEmployeesPerGroupAsync(int groupId);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac>> GetEmployeesPerGroupAsync(int groupId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetTransactions", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetTransactionsResponse")]
-        BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac[] GetTransactions(int customerId, System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate, System.Nullable<bool> downloaded);
+        System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac> GetTransactions(int customerId, System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate, System.Nullable<bool> downloaded);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/GetTransactions", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/GetTransactionsResponse")]
-        System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac[]> GetTransactionsAsync(int customerId, System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate, System.Nullable<bool> downloaded);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac>> GetTransactionsAsync(int customerId, System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate, System.Nullable<bool> downloaded);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/InsertNewTransactions", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/InsertNewTransactionsResponse")]
-        string InsertNewTransactions(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac[] transactions);
+        string InsertNewTransactions(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionInBac> transactions);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBioAccessCloudBasic/InsertNewTransactions", ReplyAction="http://tempuri.org/IBioAccessCloudBasic/InsertNewTransactionsResponse")]
-        System.Threading.Tasks.Task<string> InsertNewTransactionsAsync(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac[] transactions);
+        System.Threading.Tasks.Task<string> InsertNewTransactionsAsync(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionInBac> transactions);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1057,13 +1230,17 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
     public partial class CreateUpdateSitesRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac[] sites;
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac> sites;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int customerId;
         
         public CreateUpdateSitesRequest() {
         }
         
-        public CreateUpdateSitesRequest(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac[] sites) {
+        public CreateUpdateSitesRequest(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac> sites, int customerId) {
             this.sites = sites;
+            this.customerId = customerId;
         }
     }
     
@@ -1076,12 +1253,12 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
         public string CreateUpdateSitesResult;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac[] sites;
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac> sites;
         
         public CreateUpdateSitesResponse() {
         }
         
-        public CreateUpdateSitesResponse(string CreateUpdateSitesResult, BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac[] sites) {
+        public CreateUpdateSitesResponse(string CreateUpdateSitesResult, System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac> sites) {
             this.CreateUpdateSitesResult = CreateUpdateSitesResult;
             this.sites = sites;
         }
@@ -1093,13 +1270,17 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
     public partial class CreateUpdateGroupsRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresGroupBac[] groups;
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresGroupBac> groups;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int customerId;
         
         public CreateUpdateGroupsRequest() {
         }
         
-        public CreateUpdateGroupsRequest(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresGroupBac[] groups) {
+        public CreateUpdateGroupsRequest(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresGroupBac> groups, int customerId) {
             this.groups = groups;
+            this.customerId = customerId;
         }
     }
     
@@ -1112,12 +1293,12 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
         public string CreateUpdateGroupsResult;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresGroupBac[] groups;
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresGroupBac> groups;
         
         public CreateUpdateGroupsResponse() {
         }
         
-        public CreateUpdateGroupsResponse(string CreateUpdateGroupsResult, BioAccessTest_Production.BioAccessCloudBasic.DataStructuresGroupBac[] groups) {
+        public CreateUpdateGroupsResponse(string CreateUpdateGroupsResult, System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresGroupBac> groups) {
             this.CreateUpdateGroupsResult = CreateUpdateGroupsResult;
             this.groups = groups;
         }
@@ -1129,13 +1310,17 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
     public partial class CreateUpdateEmployeesRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[] employees;
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac> employees;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int customerId;
         
         public CreateUpdateEmployeesRequest() {
         }
         
-        public CreateUpdateEmployeesRequest(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[] employees) {
+        public CreateUpdateEmployeesRequest(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac> employees, int customerId) {
             this.employees = employees;
+            this.customerId = customerId;
         }
     }
     
@@ -1148,12 +1333,12 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
         public string CreateUpdateEmployeesResult;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[] employees;
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac> employees;
         
         public CreateUpdateEmployeesResponse() {
         }
         
-        public CreateUpdateEmployeesResponse(string CreateUpdateEmployeesResult, BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[] employees) {
+        public CreateUpdateEmployeesResponse(string CreateUpdateEmployeesResult, System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac> employees) {
             this.CreateUpdateEmployeesResult = CreateUpdateEmployeesResult;
             this.employees = employees;
         }
@@ -1194,35 +1379,35 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
             return base.Channel.LoginAsync(userName, password);
         }
         
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateTypeBac[] GetTemplateTypes() {
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateTypeBac> GetTemplateTypes() {
             return base.Channel.GetTemplateTypes();
         }
         
-        public System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateTypeBac[]> GetTemplateTypesAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateTypeBac>> GetTemplateTypesAsync() {
             return base.Channel.GetTemplateTypesAsync();
         }
         
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac[] GetSitesPerCustomer(int customerId) {
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac> GetSitesPerCustomer(int customerId) {
             return base.Channel.GetSitesPerCustomer(customerId);
         }
         
-        public System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac[]> GetSitesPerCustomerAsync(int customerId) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac>> GetSitesPerCustomerAsync(int customerId) {
             return base.Channel.GetSitesPerCustomerAsync(customerId);
         }
         
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[] GetEmployeesPerSite(int siteId, System.Nullable<bool> terminalTemplates, string templateType) {
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac> GetEmployeesPerSite(int siteId, System.Nullable<bool> terminalTemplates, string templateType) {
             return base.Channel.GetEmployeesPerSite(siteId, terminalTemplates, templateType);
         }
         
-        public System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[]> GetEmployeesPerSiteAsync(int siteId, System.Nullable<bool> terminalTemplates, string templateType) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac>> GetEmployeesPerSiteAsync(int siteId, System.Nullable<bool> terminalTemplates, string templateType) {
             return base.Channel.GetEmployeesPerSiteAsync(siteId, terminalTemplates, templateType);
         }
         
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[] GetEmployeesPerCustomer(int customerId) {
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac> GetEmployeesPerCustomer(int customerId) {
             return base.Channel.GetEmployeesPerCustomer(customerId);
         }
         
-        public System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[]> GetEmployeesPerCustomerAsync(int customerId) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac>> GetEmployeesPerCustomerAsync(int customerId) {
             return base.Channel.GetEmployeesPerCustomerAsync(customerId);
         }
         
@@ -1231,9 +1416,10 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
             return base.Channel.CreateUpdateSites(request);
         }
         
-        public string CreateUpdateSites(ref BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac[] sites) {
+        public string CreateUpdateSites(ref System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresSiteBac> sites, int customerId) {
             BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateSitesRequest inValue = new BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateSitesRequest();
             inValue.sites = sites;
+            inValue.customerId = customerId;
             BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateSitesResponse retVal = ((BioAccessTest_Production.BioAccessCloudBasic.IBioAccessCloudBasic)(this)).CreateUpdateSites(inValue);
             sites = retVal.sites;
             return retVal.CreateUpdateSitesResult;
@@ -1248,9 +1434,10 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
             return base.Channel.CreateUpdateGroups(request);
         }
         
-        public string CreateUpdateGroups(ref BioAccessTest_Production.BioAccessCloudBasic.DataStructuresGroupBac[] groups) {
+        public string CreateUpdateGroups(ref System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresGroupBac> groups, int customerId) {
             BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateGroupsRequest inValue = new BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateGroupsRequest();
             inValue.groups = groups;
+            inValue.customerId = customerId;
             BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateGroupsResponse retVal = ((BioAccessTest_Production.BioAccessCloudBasic.IBioAccessCloudBasic)(this)).CreateUpdateGroups(inValue);
             groups = retVal.groups;
             return retVal.CreateUpdateGroupsResult;
@@ -1260,20 +1447,20 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
             return base.Channel.CreateUpdateGroupsAsync(request);
         }
         
-        public string CreateUpdateGroupRelations(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeGroupBac[] employeeGroups, int customerId) {
+        public string CreateUpdateGroupRelations(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeGroupBac> employeeGroups, int customerId) {
             return base.Channel.CreateUpdateGroupRelations(employeeGroups, customerId);
         }
         
-        public System.Threading.Tasks.Task<string> CreateUpdateGroupRelationsAsync(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeGroupBac[] employeeGroups, int customerId) {
+        public System.Threading.Tasks.Task<string> CreateUpdateGroupRelationsAsync(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeGroupBac> employeeGroups, int customerId) {
             return base.Channel.CreateUpdateGroupRelationsAsync(employeeGroups, customerId);
         }
         
-        public string CreateUpdateTemplates(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac[] templates) {
-            return base.Channel.CreateUpdateTemplates(templates);
+        public string CreateUpdateTemplates(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac> templates, int customerId) {
+            return base.Channel.CreateUpdateTemplates(templates, customerId);
         }
         
-        public System.Threading.Tasks.Task<string> CreateUpdateTemplatesAsync(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac[] templates) {
-            return base.Channel.CreateUpdateTemplatesAsync(templates);
+        public System.Threading.Tasks.Task<string> CreateUpdateTemplatesAsync(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresTemplateBac> templates, int customerId) {
+            return base.Channel.CreateUpdateTemplatesAsync(templates, customerId);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1281,9 +1468,10 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
             return base.Channel.CreateUpdateEmployees(request);
         }
         
-        public string CreateUpdateEmployees(ref BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[] employees) {
+        public string CreateUpdateEmployees(ref System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac> employees, int customerId) {
             BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateEmployeesRequest inValue = new BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateEmployeesRequest();
             inValue.employees = employees;
+            inValue.customerId = customerId;
             BioAccessTest_Production.BioAccessCloudBasic.CreateUpdateEmployeesResponse retVal = ((BioAccessTest_Production.BioAccessCloudBasic.IBioAccessCloudBasic)(this)).CreateUpdateEmployees(inValue);
             employees = retVal.employees;
             return retVal.CreateUpdateEmployeesResult;
@@ -1293,27 +1481,27 @@ namespace BioAccessTest_Production.BioAccessCloudBasic {
             return base.Channel.CreateUpdateEmployeesAsync(request);
         }
         
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[] GetEmployeesPerGroup(int groupId) {
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac> GetEmployeesPerGroup(int groupId) {
             return base.Channel.GetEmployeesPerGroup(groupId);
         }
         
-        public System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac[]> GetEmployeesPerGroupAsync(int groupId) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresEmployeeBac>> GetEmployeesPerGroupAsync(int groupId) {
             return base.Channel.GetEmployeesPerGroupAsync(groupId);
         }
         
-        public BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac[] GetTransactions(int customerId, System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate, System.Nullable<bool> downloaded) {
+        public System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac> GetTransactions(int customerId, System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate, System.Nullable<bool> downloaded) {
             return base.Channel.GetTransactions(customerId, startDate, endDate, downloaded);
         }
         
-        public System.Threading.Tasks.Task<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac[]> GetTransactionsAsync(int customerId, System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate, System.Nullable<bool> downloaded) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac>> GetTransactionsAsync(int customerId, System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate, System.Nullable<bool> downloaded) {
             return base.Channel.GetTransactionsAsync(customerId, startDate, endDate, downloaded);
         }
         
-        public string InsertNewTransactions(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac[] transactions) {
+        public string InsertNewTransactions(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionInBac> transactions) {
             return base.Channel.InsertNewTransactions(transactions);
         }
         
-        public System.Threading.Tasks.Task<string> InsertNewTransactionsAsync(BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionBac[] transactions) {
+        public System.Threading.Tasks.Task<string> InsertNewTransactionsAsync(System.Collections.Generic.List<BioAccessTest_Production.BioAccessCloudBasic.DataStructuresAttendanceTransactionInBac> transactions) {
             return base.Channel.InsertNewTransactionsAsync(transactions);
         }
     }

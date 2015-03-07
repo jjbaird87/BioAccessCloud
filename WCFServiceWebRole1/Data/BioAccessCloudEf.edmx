@@ -39,6 +39,7 @@
           <Property Name="Customer_ID" Type="int" Nullable="false" />
           <Property Name="RSA_ID" Type="varchar" MaxLength="20" />
           <Property Name="BioAccess_ID" Type="uniqueidentifier" />
+          <Property Name="Employee_Number" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="EmployeeGroup">
           <Key>
@@ -345,6 +346,7 @@
           <NavigationProperty Name="Customer" Relationship="BioAccessCloudModel.FK_Employee_0" FromRole="Employee" ToRole="Customer" />
           <NavigationProperty Name="EmployeeGroups" Relationship="BioAccessCloudModel.FK_EmployeeGroup_0" FromRole="Employee" ToRole="EmployeeGroup" />
           <NavigationProperty Name="Templates" Relationship="BioAccessCloudModel.FK_Templates_0" FromRole="Employee" ToRole="Template" />
+          <Property Name="Employee_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="EmployeeGroup">
           <Key>
@@ -557,6 +559,7 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="BioAccessCloudModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Employee_Number" ColumnName="Employee_Number" />
                 <ScalarProperty Name="BioAccess_ID" ColumnName="BioAccess_ID" />
                 <ScalarProperty Name="RSA_ID" ColumnName="RSA_ID" />
                 <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />

@@ -88,6 +88,7 @@
     <NavigationProperty Name="Customer" Relationship="BioAccessCloudModel.FK_Employee_0" FromRole="Employee" ToRole="Customer" />
     <NavigationProperty Name="EmployeeGroups" Relationship="BioAccessCloudModel.FK_EmployeeGroup_0" FromRole="Employee" ToRole="EmployeeGroup" />
     <NavigationProperty Name="Templates" Relationship="BioAccessCloudModel.FK_Templates_0" FromRole="Employee" ToRole="Template" />
+    <Property Name="Employee_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="EmployeeGroup">
     <Key>
